@@ -20,26 +20,31 @@ public class StoreController {
 	@Autowired
 	private StoreService storeService;
 	
+	//http://localhost:8080/store/products
 	@GetMapping("/store/products")
 	public ArrayList<ElectronicItem> getAllProducts() {
 		return this.storeService.getAllProducts();
 	}
 	
+	//http://localhost:8080/store/products/1
 	@GetMapping("/store/products/{productId}")
 	public ElectronicItem getProduct(@PathVariable int productId) {
 		return this.storeService.getProduct(productId);
 	}
 	
+	//http://localhost:8080/store/addProduct
 	@PostMapping("/store/addProduct")
 	public ElectronicItem addProduct(@RequestBody ElectronicItem item) {
 		return this.storeService.addElectronicItem(item);
 	}
 	
+	//http://localhost:8080/store/deleteProduct/1
 	@DeleteMapping("/store/deleteProduct/{productId}")
 	public ElectronicItem deleteProduct(@PathVariable int productId) {
 		return this.storeService.deleteElectronicItem(productId);
 	}
 	
+	//http://localhost:8080/store/updateProduct/1
 	@PutMapping("/store/updateProduct/{productId}")
 	public ElectronicItem deleteProduct(@RequestBody ElectronicItem item, @PathVariable int productId) {
 		return this.storeService.updateElectronicItem(item, productId);
